@@ -1,13 +1,16 @@
 # Append Data to a CSV file
-var fs = require('fs');
 
+<script>
+var fs = require('fs');
 fs.appendFile('data/tweets.csv', ' Testing\n', function (err) {
   if (err) throw err;
   console.log('Saved!');
 });
-
+</script>
 
 # Stream data from twitter and filter tweets
+
+<script>
 var stream = function(data) {
 	var stream = client.stream('statuses/filter', {track: '@POTUS', track: '@realDonaldTrump', track: "Trump's", track: 'Trump'});
 	stream.on('data', function(tweet) {
@@ -27,8 +30,11 @@ var stream = function(data) {
 		}
 	});
 }
+</script>
 
 # Read data from a CSV file
+
+<script>
 var csvData=[];
 fs.createReadStream('data/accounts.csv')
 .pipe(parse({delimiter: ':'}))
@@ -39,3 +45,4 @@ fs.createReadStream('data/accounts.csv')
 	console.log('starting...')
 	stream(csvData);
 });
+</script>
