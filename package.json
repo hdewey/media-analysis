@@ -1,0 +1,11 @@
+{
+  "name": "media-analysis",
+  "version": "1.0.0",
+  "description": "Analyzing the way the Media talks about Trump",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Henry Dewey",
+  "license": "MIT"
+}
