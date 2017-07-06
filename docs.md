@@ -1,16 +1,13 @@
-var Twitter = require('twitter');
-var fs = require('fs'); 
-var parse = require('csv-parse');
+# Append Data to a CSV file
+var fs = require('fs');
 
-require('dotenv').config()
-
-var client = new Twitter({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+fs.appendFile('data/tweets.csv', ' Testing\n', function (err) {
+  if (err) throw err;
+  console.log('Saved!');
 });
 
+
+# Stream data from twitter and filter tweets
 var stream = function(data) {
 	var stream = client.stream('statuses/filter', {track: '@POTUS', track: '@realDonaldTrump', track: "Trump's", track: 'Trump'});
 	stream.on('data', function(tweet) {
@@ -31,6 +28,7 @@ var stream = function(data) {
 	});
 }
 
+# Read data from a CSV file
 var csvData=[];
 fs.createReadStream('data/accounts.csv')
 .pipe(parse({delimiter: ':'}))
