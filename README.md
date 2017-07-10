@@ -8,17 +8,14 @@ fs.appendFile('data/tweets.csv', ' Testing\n', function (err) {
 });
 ```
 
-# Stream data from twitter and filter tweets
+# Stream Data from Twitter and Filter Tweets
 
 ```
 var stream = function(data) {
 	var stream = client.stream('statuses/filter', {track: '@POTUS', track: '@realDonaldTrump', track: "Trump's", track: 'Trump'});
 	stream.on('data', function(tweet) {
-
 		if (tweet.user !== undefined) {
-
 			var username = tweet.user.screen_name.toLowerCase();
-
 			var x  = 0;
 			while (x < data.length) {
 				//console.log(data[x][0])
