@@ -1,7 +1,7 @@
 var PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 var personality_insights = new PersonalityInsightsV3({
-  username: 'bcbd9c1d-d2fc-4a40-b752-f40958fedf3b',
-  password: 'MMD01pTNpXPH',
+  username: process.env.WATSON_PERSONALITY_USERNAME,
+  password: process.env.WATSON_PERSONALITY_PASSWORD,
   version_date: '2016-10-20'
 });
 
