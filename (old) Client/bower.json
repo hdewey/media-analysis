@@ -1,0 +1,17 @@
+{
+  "name": "Media Personality Project",
+  "homepage": "https://github.com/hdewey/media-analysis",
+  "description": "discovering the personality behind the media.",
+  "main": "",
+  "authors": [
+    "Henry Dewey"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

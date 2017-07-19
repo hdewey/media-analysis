@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+	background-color: #fff;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+.title {
+	font-family: 'Raleway', sans-serif;
+	position: relative;
+	top: 0vh;
+}
+
+#title {
+	font-size: 45px;
+	color: #666666;
+}
+
+.chart {
+	position: relative;
+	position: absolute;
+	top: 50vh;
+}

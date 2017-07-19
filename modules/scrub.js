@@ -1,29 +1,40 @@
 var fs = require('fs'); 
 var parse = require('csv-parse');
 
+
+// Function for writing data to a file
 var writeToFile = function(text) {
-	fs.appendFile('data/clean.txt', text + '\n', function (err) {
+	// writing to the file clean.txt
+	var path = 'data/clean.txt'
+	fs.appendFile(path, text + '\n', function (err) {
 	  if (err) throw err;
 	});
 } 
 
+exports.writeToFile = function(text, path) {
+	fs.appendFile(path, text + '\n', function (err) {
+	  if (err) throw err;
+	});
+} 
+
+// Used for striping away excess metadata and characters.
 var strip = function(textArray) {
-	var x = 0;
-	while (x < textArray.length) {
-		var text = textArray[0];
 
-		var textSplit = text.split(' ');
-		
-		var cleanText = [];
+	// Array for each tweet
+	var text = textArray[0];
 
-		var b = 0;
-		while (b < textSplit.length) {
-			if(!textSplit[b].includes('https://')) {
-				cleanText.push(textSplit[b])
-			}
-			b++
+	// Splitting the text from the array, into smaller arrays
+	var textSplit = text.split(' ');
+
+	var cleanText = [];
+
+	// Looping for each word
+	var b = 0;
+	while (b < textSplit.length) {
+		if(!textSplit[b].includes('https://')) {
+			cleanText.push(textSplit[b])
 		}
-		x++;
+		b++
 	}
 	cleanText = cleanText.toString();
 	cleanText = cleanText.replace(/,/g, ' ');
@@ -32,8 +43,13 @@ var strip = function(textArray) {
 
 exports.run = function() {
 	var csvData=[];
-	fs.createReadStream('data/tweets.csv')
-	.pipe(parse({delimiter: '`',relax: true}))
+	var path = 'data/tweets.csv'
+	fs.createReadStream(path)
+	.pipe(
+		parse( {
+			delimiter: '`',
+			relax: true
+		}))
 	.on('data', function(csvrow) {
 	  csvData.push(csvrow);        
 	})
